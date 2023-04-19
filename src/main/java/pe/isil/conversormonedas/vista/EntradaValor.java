@@ -4,6 +4,8 @@
  */
 package pe.isil.conversormonedas.vista;
 
+import pe.isil.conversormonedas.controlador.Conversor;
+
 /**
  *
  * @author 51992
@@ -95,9 +97,10 @@ public class EntradaValor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        int valor = Integer.parseInt(txtIngresoDinero.getText());
-        int conversion = valor + valor;
-        txtIngresoDinero.setText(Integer.toString(conversion));
+        OpcionesMoneda opcionesMon = new OpcionesMoneda(Integer.parseInt(txtIngresoDinero.getText()));
+        opcionesMon.setLocationRelativeTo(null);
+        opcionesMon.setVisible(true);
+        
     }//GEN-LAST:event_btnOKActionPerformed
 
     /**

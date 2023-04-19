@@ -84,10 +84,17 @@ public class MenuConversor extends javax.swing.JFrame {
     private void cmbComboMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbComboMenuActionPerformed
         String opcionMenu = (String)cmbComboMenu.getSelectedItem();
         if(opcionMenu.equals("Conversor de Monedas")){
-            System.out.println("Conversor de Monedas");
+            // Crea una instancia del segundo JFrame
+            EntradaValor entradaFrame = new EntradaValor();
+            // Hace visible el segundo JFrame
+            entradaFrame.setLocationRelativeTo(null);
+
+            entradaFrame.setVisible(true);
+            // Cierra el JFrame actual (opcional)
+            this.dispose();
         }
         if(opcionMenu.equals("Conversor de Temperatura")){
-            System.out.println("Conversor de Temperatura");
+            System.out.println("Conversor de asd Temperaturasssss");
         }
       
     }//GEN-LAST:event_cmbComboMenuActionPerformed
