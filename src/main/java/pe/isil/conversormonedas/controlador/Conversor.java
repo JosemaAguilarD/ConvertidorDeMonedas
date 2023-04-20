@@ -4,16 +4,16 @@ package pe.isil.conversormonedas.controlador;
 
 public class Conversor {
     
-    int valor;
+    double valor;
 
     public Conversor() {
     }
 
-    public Conversor(int valor) {
+    public Conversor(double valor) {
         this.valor = valor;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
@@ -22,7 +22,7 @@ public class Conversor {
     }
     
     public double SolADolar(){
-        double tc = 0.26;
+        double tc = 0.27;
         double valorMod = valor * tc;
         return valorMod;
     }

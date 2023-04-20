@@ -17,9 +17,9 @@ public class OpcionesMoneda extends javax.swing.JFrame {
      * Creates new form OpcionesMoneda
      */
     
-    int valor;
+    double valor;
 
-    public OpcionesMoneda(int valor) {
+    public OpcionesMoneda(double valor) {
         this.valor = valor;
          initComponents();
         cmbOpcionesMoneda.addItem("De Soles a Dólar");
@@ -79,6 +79,11 @@ public class OpcionesMoneda extends javax.swing.JFrame {
         });
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,7 +95,7 @@ public class OpcionesMoneda extends javax.swing.JFrame {
                     .addComponent(cmbOpcionesMoneda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(117, 117, 117))
         );
@@ -103,7 +108,7 @@ public class OpcionesMoneda extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOK)
                     .addComponent(btnCancel))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,44 +188,44 @@ public class OpcionesMoneda extends javax.swing.JFrame {
             moneda = "soles";
             simbolo = "S/.";
          }
+        this.setVisible(false);
         JOptionPane.showMessageDialog(null, "Tienes : " + simbolo +  resultado + " "+ moneda +"!");
+        int option = JOptionPane.showConfirmDialog(null, "¿Desea continuar?");
+        
+        MenuConversor menu = new MenuConversor();
 
+        if (option == JOptionPane.OK_OPTION) {
+            menu.setLocationRelativeTo(null);
+            menu.setVisible(true);
+            this.dispose();
+        }
+        else if(option == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(null, "Programa finalizado!");
+            this.dispose();
+            System.exit(0);
+
+        }
+        else if(option == JOptionPane.CANCEL_OPTION){
+            this.setVisible(true);
+        }
+
+
+        
     }//GEN-LAST:event_btnOKActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+       this.dispose();
+       EntradaValor entradaVal = new EntradaValor();
+       entradaVal.getTxtIngresoDinero().setText(Double.toString(valor));
+       entradaVal.setLocationRelativeTo(null);
+       entradaVal.setVisible(true);
+       
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OpcionesMoneda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OpcionesMoneda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OpcionesMoneda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OpcionesMoneda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new OpcionesMoneda().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
